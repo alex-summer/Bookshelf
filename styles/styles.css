@@ -2,30 +2,51 @@ body {
   font-size: 25px;
   margin: 0px;
   text-align: center;
+  background-color: rgba(179, 204, 204, .5);
 }
 
-.gridItem {
+.book {
+  background-color: white;
+  display: grid;
   border: 1px solid black;
   border-radius: 6px;
+  padding: 0px;
+  grid-template-areas:
+    "title title"
+    "cover author"
+    "cover length"
+    "cover description";
+}
+.title {
+  grid-area: title;
 }
 
-
 .cover {
+  grid-area: cover;
   height: 300px;
   width: 200px;
+}
+.author {
+  grid-area: author;
+}
+.length {
+  grid-area: length
+}
+.description {
+  grid-area: description;
 }
 #titleArea {
   width: 100%;
   height: 10%;
   border: 1px solid black;
+  background-color: rgba(179, 204, 204, .75)
 }
 
 #content {
+  display: grid;
   width: 100%;
   height: 90%;
-  display: grid;
   padding: 10px;
-  border: 1px solid red;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
   gap: 10px;
 }
