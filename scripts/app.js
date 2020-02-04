@@ -1,7 +1,7 @@
 let myLibrary = [];
-const theHobbit = new Book("The Hobbit", "J.R.R Toiklen", "200", "Bilbo goes on an adventure", "./assets/Hobbit.jpg")
-const lotr = new Book("Lord of the Rings", "J.R.R Toiklen", "300", "Nice", "./assets/lotr.jpg")
-const lotr2 = new Book("Lord of the Rings", "J.R.R Toiklen", "300", "Nice", "./assets/lotr.jpg")
+const theHobbit = new Book("The Hobbit", "J.R.R Toiklen", "200", "./assets/Hobbit.jpg")
+const lotr = new Book("Lord of the Rings", "J.R.R Toiklen", "300", "./assets/lotr.jpg")
+const lotr2 = new Book("Lord of the Rings", "J.R.R Toiklen", "300", "./assets/lotr.jpg")
 addBookToLibrary(theHobbit);
 addBookToLibrary(lotr);
 addBookToLibrary(lotr2);
@@ -16,11 +16,10 @@ addBookToLibrary(lotr2);
 displayLibrary();
 
 
-function Book(title, author, length, description, cover){
+function Book(title, author, length, cover){
   this.title = title;
   this.author = `Author: ${author}`;
   this.length = `Length: ${length}`;
-  this.description = description;
   this.cover = cover;
 }
 
@@ -29,34 +28,41 @@ function addBookToLibrary(book){
 }
 
 function displayLibrary(){ 
+  const grid = document.getElementById("content");
+  const newBook = document.createElement("div")
+  const plus = document.createElement("p")
+  newBook.id = "newBook"
+  plus.textContent = "+";
+  newBook.appendChild(plus);
   myLibrary.forEach(element => {
-    const gridDiv = document.getElementById("content");
-    var bookDiv = document.createElement("div");
-    var titleDiv = document.createElement("h2");
-    var coverDiv = document.createElement("img");
-    var authorDiv = document.createElement("p");
-    var lengthDiv = document.createElement("p");
-    var descriptionDiv = document.createElement("p");
-    bookDiv.className = "book"
-    titleDiv.className = "title"
-    coverDiv.className = "cover"
-    authorDiv.className = "author"
-    lengthDiv.className = "length"
-    descriptionDiv.className = "description"
+    //Creating each element for our div
+    var book = document.createElement("div");
+    var title= document.createElement("h2");
+    var cover = document.createElement("img");
+    var author = document.createElement("p");
+    var length = document.createElement("p");
+    var remove = document.createElement("button");
+    //Adding css classes to them so that way grid area works
+    book.className = "book"
+    title.className = "title"
+    cover.className = "cover"
+    author.className = "author"
+    length.className = "length"
+    remove.className = "remove"
 
-
-    
-    titleDiv.textContent = element.title;
-    coverDiv.src = element.cover;
-    authorDiv.textContent = element.author;
-    lengthDiv.textContent = element.length;
-    descriptionDiv.textContent = element.description;
-    
-    bookDiv.appendChild(titleDiv);
-    bookDiv.appendChild(coverDiv);
-    bookDiv.appendChild(authorDiv);
-    bookDiv.appendChild(lengthDiv);
-    bookDiv.appendChild(descriptionDiv);
-    gridDiv.appendChild(bookDiv);
+    //Populating content
+    title.textContent = element.title;
+    cover.src = element.cover;
+    author.textContent = element.author;
+    length.textContent = element.length;
+    remove.textContent = "REMOVE"
+    //putting everything into the proper parent divs
+    book.appendChild(title);
+    book.appendChild(cover);
+    book.appendChild(author);
+    book.appendChild(length);
+    book.appendChild(remove);
+    grid.appendChild(book);
   });
+  grid.appendChild(newBook);
 }
