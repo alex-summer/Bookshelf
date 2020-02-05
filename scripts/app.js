@@ -1,7 +1,12 @@
+//Variables
 let myLibrary = [];
+const grid = document.getElementById("content");
+//Test books. Temporary variables
 const theHobbit = new Book("The Hobbit", "J.R.R Toiklen", "200", "./assets/Hobbit.jpg")
 const lotr = new Book("Lord of the Rings", "J.R.R Toiklen", "300", "./assets/lotr.jpg")
 const lotr2 = new Book("Lord of the Rings", "J.R.R Toiklen", "300", "./assets/lotr.jpg")
+
+//Adding the test books to the library upon load
 addBookToLibrary(theHobbit);
 addBookToLibrary(lotr);
 addBookToLibrary(lotr2);
@@ -13,8 +18,21 @@ addBookToLibrary(lotr2);
 addBookToLibrary(theHobbit);
 addBookToLibrary(lotr2);
 addBookToLibrary(lotr2);
+
+
+//Displays library on load
 displayLibrary();
 
+
+grid.addEventListener("click", function(e){
+  var button = e.target.value;
+  if(button === "newBook"){
+    addBook();
+  }
+  else if(button != undefined){
+    removeBook(button);
+  }
+})
 
 function Book(title, author, length, cover){
   this.title = title;
@@ -27,12 +45,20 @@ function addBookToLibrary(book){
   myLibrary.push(book);
 }
 
-function displayLibrary(){ 
-  const grid = document.getElementById("content");
+function addBook(){}
+
+function removeBook(bookIndex){
+  myLibrary.splice(bookIndex, 1);
+  displayLibrary();
+}
+
+function displayLibrary(){
+  grid.innerHTML = ""
   const newBook = document.createElement("button")
   newBook.id = "newBook"
   newBook.textContent = "+";
-  myLibrary.forEach(element => {
+  newBook.value = "newBook"
+  for(var i = 0; i < myLibrary.length; i++){
     //Creating each element for our div
     var book = document.createElement("div");
     var title= document.createElement("h2");
@@ -49,11 +75,12 @@ function displayLibrary(){
     remove.className = "remove"
 
     //Populating content
-    title.textContent = element.title;
-    cover.src = element.cover;
-    author.textContent = element.author;
-    length.textContent = element.length;
+    title.textContent = myLibrary[i].title;
+    cover.src = myLibrary[i].cover;
+    author.textContent = myLibrary[i].author;
+    length.textContent = myLibrary[i].length;
     remove.textContent = "REMOVE"
+    remove.value = i;
     //putting everything into the proper parent divs
     book.appendChild(title);
     book.appendChild(cover);
@@ -61,6 +88,7 @@ function displayLibrary(){
     book.appendChild(length);
     book.appendChild(remove);
     grid.appendChild(book);
-  });
+  };
   grid.appendChild(newBook);
 }
+
