@@ -1,7 +1,8 @@
 body {
   font-size: 25px;
   color: rgba(255, 255, 255, .75);
-  margin: 0px;
+  margin: 0;
+  padding: 0;
   text-align: center;
   font-size: 20px;
   background-color: rgba(20, 23, 28, .9);
@@ -11,7 +12,6 @@ body {
   background-color: rgb(20, 23, 28);
   display: grid;
   border-radius: 6px;
-  padding: 0px;
   grid-template-areas:
     "title title"
     "cover author"
@@ -55,28 +55,33 @@ body {
 #titleArea {
   width: 100%;
   height: 10%;
-  border: 1px solid black;
   background-color: rgb(20, 23, 28);
-  box-shadow: 0px 10px 10px rgb(20, 23, 28);;
+  border: 1px solid rgb(20, 23, 28);
+  box-shadow: 0px 10px 10px rgb(20, 23, 28);
 }
 
 #content {
   display: grid;
-  width: 100%;
-  height: 90%;
+  margin-top: 10px;
   padding: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 10px;
 }
 
 #newBook {
+  font-size: 50px;
+  height: 100px;
+  width: 100px;
   background-color: rgb(20, 23, 28);
-  border-radius: 6px;
-  font-size: 75px;
-  padding: auto;
+  color: rgba(255, 255, 255, .75);
+  border-radius: 100%;
+  margin: auto;
+  border: none;
 }
-
 #newBook:hover {
-  font-size: 150px;
-  color: rgba(255, 255, 255, 1)
+  font-size: 75px;
+  height: 150px;
+  width: 150px;
+  color: rgba(255, 255, 255, 1);
+  transition-duration: .75s;
 }

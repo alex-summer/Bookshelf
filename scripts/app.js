@@ -29,11 +29,9 @@ function addBookToLibrary(book){
 
 function displayLibrary(){ 
   const grid = document.getElementById("content");
-  const newBook = document.createElement("div")
-  const plus = document.createElement("p")
+  const newBook = document.createElement("button")
   newBook.id = "newBook"
-  plus.textContent = "+";
-  newBook.appendChild(plus);
+  newBook.textContent = "+";
   myLibrary.forEach(element => {
     //Creating each element for our div
     var book = document.createElement("div");
