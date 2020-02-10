@@ -72,7 +72,7 @@ function displayLibrary(){
     cover.className = "cover"
     author.className = "author"
     length.className = "length"
-    remove.className = "remove"
+    remove.className = "button"
 
     //Populating content
     title.textContent = myLibrary[i].title;

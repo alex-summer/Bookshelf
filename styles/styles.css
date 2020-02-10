@@ -35,7 +35,7 @@ body {
   grid-area: length
 }
 
-.remove {
+.button {
   grid-area: remove;
   display: block;
   width: 50%;
@@ -48,9 +48,29 @@ body {
   border: 0;
 }
 
-.remove:hover {
+.button:hover {
   color: rgba(255, 255, 255, 1);
   transition-duration: .4s;
+}
+.formItem{
+  margin: 10px;
+}
+
+#formContainer {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top:17%;
+  margin-left:-202px;
+}
+#form{
+  max-width:400px;
+  min-width:250px;
+  padding:10px 50px;
+  background-color: rgb(20, 23, 28);
+  border:2px solid gray;
+  border-radius:10px;
+  font-family:raleway;
 }
 #titleArea {
   width: 100%;
@@ -85,3 +105,4 @@ body {
   color: rgba(255, 255, 255, 1);
   transition-duration: .75s;
 }
+
