@@ -27,13 +27,15 @@ displayLibrary();
 grid.addEventListener("click", function(e){
   var button = e.target.value;
   if(button === "newBook"){
-    addBook();
+    newBook();
   }
   else if(button != undefined){
     removeBook(button);
   }
 })
 
+
+//Book Object
 function Book(title, author, length, cover){
   this.title = title;
   this.author = `Author: ${author}`;
@@ -45,7 +47,9 @@ function addBookToLibrary(book){
   myLibrary.push(book);
 }
 
-function addBook(){}
+function newBook(){
+  
+}
 
 function removeBook(bookIndex){
   myLibrary.splice(bookIndex, 1);
