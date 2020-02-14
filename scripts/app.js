@@ -1,6 +1,7 @@
 //Variables
 let myLibrary = [];
 const grid = document.getElementById("content");
+const form = document.getElementById("formContainer");
 //Test books. Temporary variables
 const theHobbit = new Book("The Hobbit", "J.R.R Toiklen", "200", "./assets/Hobbit.jpg")
 const lotr = new Book("Lord of the Rings", "J.R.R Toiklen", "300", "./assets/lotr.jpg")
@@ -23,12 +24,19 @@ addBookToLibrary(lotr2);
 //Displays library on load
 displayLibrary();
 
-
+form.addEventListener("click", function(e){
+  var button = e.target.value;
+  if(button === "closeForm"){
+    closeNewBook();
+  }
+})
 grid.addEventListener("click", function(e){
   var button = e.target.value;
+  console.log(button);
   if(button === "newBook"){
-    newBook();
+    showNewBook();
   }
+  
   else if(button != undefined){
     removeBook(button);
   }
@@ -47,8 +55,11 @@ function addBookToLibrary(book){
   myLibrary.push(book);
 }
 
-function newBook(){
-  
+function showNewBook(){
+  form.style.display = "block";
+}
+function closeNewBook(){
+  form.style.display = "none";
 }
 
 function removeBook(bookIndex){

@@ -54,21 +54,35 @@ body {
 }
 .formItem{
   margin: 10px;
+  font-size: 25px;
 }
 
 #formContainer {
-  display: block;
+  display: none;
+  z-index: 3;
   position: fixed;
-  left: 50%;
-  top:17%;
-  margin-left:-202px;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, .3);
+}
+#closeForm{
+  background-color: transparent;
+  position: absolute;
+  right: 5%;
+  width: 0%;
+  margin: 0px;
+  font-size: 40px;
 }
 #form{
   max-width:400px;
   min-width:250px;
+  position: fixed;
+  left: 50%;
+  top:17%;
+  margin-left:-202px;
   padding:10px 50px;
   background-color: rgb(20, 23, 28);
-  border:2px solid gray;
   border-radius:10px;
 }
 #header {
