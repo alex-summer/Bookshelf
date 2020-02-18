@@ -2,6 +2,7 @@
 let myLibrary = [];
 const grid = document.getElementById("content");
 const form = document.getElementById("formContainer");
+submitForm = document.querySelector("form");
 //Test books. Temporary variables
 const theHobbit = new Book("The Hobbit", "J.R.R Toiklen", "200", "./assets/Hobbit.jpg")
 const lotr = new Book("Lord of the Rings", "J.R.R Toiklen", "300", "./assets/lotr.jpg")
@@ -27,14 +28,20 @@ displayLibrary();
 form.addEventListener("click", function(e){
   var button = e.target.value;
   if(button === "closeForm"){
-    closeNewBook();
+    closeForm();
   }
 })
+
+form.addEventListener("submit", function(e){
+  console.log(submitForm.elements.title.value);
+  e.preventDefault();
+})
+
 grid.addEventListener("click", function(e){
   var button = e.target.value;
   console.log(button);
   if(button === "newBook"){
-    showNewBook();
+    openForm();
   }
   
   else if(button != undefined){
@@ -55,10 +62,11 @@ function addBookToLibrary(book){
   myLibrary.push(book);
 }
 
-function showNewBook(){
+function openForm(){
   form.style.display = "block";
 }
-function closeNewBook(){
+
+function closeForm(){
   form.style.display = "none";
 }
 
