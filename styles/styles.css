@@ -11,6 +11,7 @@ body {
 .book {
   background-color: rgb(20, 23, 28);
   display: grid;
+  padding: 10px;
   border-radius: 6px;
   grid-template-areas:
     "title title"
@@ -74,7 +75,7 @@ body {
   margin: 0px;
   font-size: 40px;
 }
-#form{
+#newBookForm{
   max-width:400px;
   min-width:250px;
   position: fixed;

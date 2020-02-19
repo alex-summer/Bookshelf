@@ -1,45 +1,29 @@
 //Variables
 let myLibrary = [];
 const grid = document.getElementById("content");
-const form = document.getElementById("formContainer");
-submitForm = document.querySelector("form");
-//Test books. Temporary variables
-const theHobbit = new Book("The Hobbit", "J.R.R Toiklen", "200", "./assets/Hobbit.jpg")
-const lotr = new Book("Lord of the Rings", "J.R.R Toiklen", "300", "./assets/lotr.jpg")
-const lotr2 = new Book("Lord of the Rings", "J.R.R Toiklen", "300", "./assets/lotr.jpg")
-
-//Adding the test books to the library upon load
-addBookToLibrary(theHobbit);
-addBookToLibrary(lotr);
-addBookToLibrary(lotr2);
-addBookToLibrary(lotr2);
-addBookToLibrary(lotr2);
-addBookToLibrary(theHobbit);
-addBookToLibrary(lotr2);
-addBookToLibrary(lotr2);
-addBookToLibrary(theHobbit);
-addBookToLibrary(lotr2);
-addBookToLibrary(lotr2);
-
+const formContainer = document.getElementById("formContainer");
+const newBookForm = document.getElementById("newBookForm");
 
 //Displays library on load
 displayLibrary();
 
-form.addEventListener("click", function(e){
+formContainer.addEventListener("click", function(e){
   var button = e.target.value;
   if(button === "closeForm"){
     closeForm();
   }
 })
 
-form.addEventListener("submit", function(e){
-  console.log(submitForm.elements.title.value);
+newBookForm.addEventListener("submit", function(e){
+  var book = new Book(newBookForm.elements.title.value, newBookForm.elements.Author.value,newBookForm.elements.pages.value,"./assets/lotr.jpg");
+  addBookToLibrary(book);
+  closeForm();
+  displayLibrary();
   e.preventDefault();
 })
 
 grid.addEventListener("click", function(e){
   var button = e.target.value;
-  console.log(button);
   if(button === "newBook"){
     openForm();
   }
@@ -63,11 +47,11 @@ function addBookToLibrary(book){
 }
 
 function openForm(){
-  form.style.display = "block";
+  formContainer.style.display = "block";
 }
 
 function closeForm(){
-  form.style.display = "none";
+  formContainer.style.display = "none";
 }
 
 function removeBook(bookIndex){
